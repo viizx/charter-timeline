@@ -1,0 +1,19 @@
+{
+  "name": "charter-timeline",
+  "version": "1.0.0",
+  "description": "Backend for Charter timeline",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viizx/charter-timeline.git"
+  },
+  "author": "Vice Radica",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/viizx/charter-timeline/issues"
+  },
+  "homepage": "https://github.com/viizx/charter-timeline#readme"
+}
