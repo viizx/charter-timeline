@@ -4,7 +4,7 @@
   "description": "Backend for Charter timeline",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/viizx/charter-timeline/issues"
   },
-  "homepage": "https://github.com/viizx/charter-timeline#readme"
+  "homepage": "https://github.com/viizx/charter-timeline#readme",
+  "dependencies": {
+    "15": "^0.0.0",
+    "@hapi/joi": "^17.1.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "mongoose": "^6.3.1",
+    "nodemon": "^2.0.16"
+  }
 }
