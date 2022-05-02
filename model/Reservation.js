@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+
+
 const reservationSchema = new mongoose.Schema(
   {
     x: {
@@ -18,6 +20,7 @@ const reservationSchema = new mongoose.Schema(
       required: true,
       max: 2,
       min: 2,
+      
     },
   },
 );
