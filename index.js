@@ -3,6 +3,7 @@ const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
+const reservationRoute = require("./routes/reservations");
 const cors = require("cors");
 
 dotenv.config();
@@ -19,6 +20,7 @@ app.use(express.json());
 
 //Routes Middleware
 app.use("/api/user", authRoute);
+app.use("/api/reservation", reservationRoute);
 
 app.get("/", (req, res) => {
   res.send("tu smo");
