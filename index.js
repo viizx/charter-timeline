@@ -19,17 +19,17 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () =>
 app.use(cors());
 app.use(express.json());
 
-cron.schedule("* * * * *", function () {
-  console.log("every minute");
-  deleteOld();
+app.get("/", (req, res) => {
+  res.send("tu smo");
 });
 
 //Routes Middleware
 app.use("/api/user", authRoute);
 app.use("/api/reservation", reservationRoute);
 
-app.get("/", (req, res) => {
-  res.send("tu smo");
+//Cron Job to delete old reservations every day at midnight
+cron.schedule("0 0 * * *", function () {
+  deleteOld();
 });
 //Listening on port
 app.listen(3000, () => console.log("Server up and running"));
