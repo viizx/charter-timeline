@@ -18,7 +18,7 @@
   "homepage": "https://github.com/viizx/charter-timeline#readme",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
-    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.18.0",
