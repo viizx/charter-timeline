@@ -23,7 +23,7 @@ router.get("/:reservationId", async (req, res) => {
 });
 
 // izbrisi odredenu rezervaciju
-router.delete("/:reservationId", verify, async (req, res) => {
+router.delete("/:reservationId", async (req, res) => {
   try {
     const removedReservation = await Reservation.deleteOne({
       _id: req.params.reservationId,
@@ -35,11 +35,13 @@ router.delete("/:reservationId", verify, async (req, res) => {
 });
 
 // stvori novu rezervaciju
-router.post("/", verify, async (req, res) => {
+router.post("/", async (req, res) => {
   const reservation = new Reservation({
     x: req.body.x,
     y: req.body.y,
     fillColor: req.body.fillColor,
+    from: req.body.from,
+    to: req.body.to,
   });
 
   try {
@@ -60,6 +62,8 @@ router.put("/:reservationId", async (req, res) => {
           x: req.body.x,
           y: req.body.y,
           fillColor: req.body.fillColor,
+          from: req.body.from,
+          to: req.body.to,
         },
       }
     );
