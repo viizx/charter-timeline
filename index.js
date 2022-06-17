@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
 const reservationRoute = require("./routes/reservations");
+const shipRoute = require("./routes/ships");
 const cors = require("cors");
 const cron = require("node-cron");
 const deleteOld = require("./utility/deleteOld");
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 //Routes Middleware
 app.use("/api/user", authRoute);
 app.use("/api/reservation", reservationRoute);
+app.use("/api/ship", shipRoute);
 
 //Cron Job to delete old reservations every day at midnight
 cron.schedule("0 0 * * *", function () {
