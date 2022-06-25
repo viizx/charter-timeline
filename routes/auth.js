@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 // validation
-const joi = require("@hapi/joi");
+const joi = require("joi");
 
 const schema = joi.object({
   email: joi.string().min(6).required().email(),
