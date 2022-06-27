@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../model/User.js");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const verify = require("../utility/verifyToken");
 const {
   registerValidation,
   loginValidation,
@@ -36,7 +37,7 @@ router.get("/:userId", async (req, res) => {
 });
 
 //izbrisi korisnika mailom
-router.delete("/:userId", async (req, res) => {
+router.delete("/:userId", verify, async (req, res) => {
   try {
     const user = await User.deleteOne({ _id: req.params.userId });
     res.json(user);
