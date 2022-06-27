@@ -1,0 +1,385 @@
+openapi: "3.0.0"
+info:
+  description: "Charter Timeline API"
+  version: "1.0.0"
+  title: "Charter Timeline API"
+  contact:
+    email: "viceradicaa@gmail.com"
+tags:
+  - name: "reservation"
+    description: "Everything about your Reservations"
+  - name: "ships"
+    description: "Manage your fleet"
+  - name: "user"
+    description: "Operations about user"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /api/reservation:
+    get:
+      tags:
+        - "reservation"
+      summary: "Get all reservations"
+      description: ""
+      operationId: "getReservation"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "Invalid input"
+
+    post:
+      tags:
+        - "reservation"
+      summary: "Add a new reservation to the timeline"
+      description: ""
+      operationId: "addReservation"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/Reservation"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "Invalid input"
+
+  /api/reservation/{reservationId}:
+    get:
+      tags:
+        - "reservation"
+      summary: "Get reservation by ID"
+      description: ""
+      operationId: "getReservationByID"
+      parameters:
+        - name: "reservationId"
+          in: "path"
+          description: "The id that needs to be fetched. Use '62b76f7fdcf9fded1c18cf1f' for testing."
+          required: true
+
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid id supplied"
+        "404":
+          description: "Reservation not found"
+
+    put:
+      tags:
+        - "reservation"
+      summary: "Edit reservation by ID"
+      description: ""
+      operationId: "putReservationByID"
+      parameters:
+        - name: "reservationId"
+          required: true
+          in: "path"
+          description: "The id that needs to be fetched. Use '62b76f7fdcf9fded1c18cf1f' for testing."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/Reservation"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid id supplied"
+        "404":
+          description: "Reservation not found"
+
+    delete:
+      tags:
+        - "reservation"
+      summary: "Get reservation by ID"
+      description: ""
+      operationId: "deleteReservationByID"
+      parameters:
+        - name: "reservationId"
+          in: "path"
+          description: "The id that needs to be fetched. Grab ID from one of the reservation from Get all request."
+          # type: "integer"
+          # format: "int64"
+          required: true
+
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid id supplied"
+        "404":
+          description: "Reservation not found"
+
+  /api/ship:
+    get:
+      tags:
+        - "ships"
+      summary: "Get all ships"
+      description: ""
+      operationId: "getShip"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "Invalid input"
+
+    post:
+      tags:
+        - "ships"
+      summary: "Add a new ship to your fleet"
+      description: ""
+      operationId: "addShip"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/Ship"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "Invalid input"
+
+  /api/ship/{shipId}:
+    get:
+      tags:
+        - "ships"
+      summary: "Get ship by ID"
+      description: ""
+      operationId: "getShipByID"
+      parameters:
+        - name: "shipId"
+          in: "path"
+          description: "The id that needs to be fetched. Use '62b9f350d45365e780644cdc' for testing."
+          required: true
+
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid id supplied"
+        "404":
+          description: "Ship not found"
+
+    put:
+      tags:
+        - "ships"
+      summary: "Edit ship by ID"
+      description: ""
+      operationId: "putShipByID"
+      parameters:
+        - name: "shipId"
+          required: true
+          in: "path"
+          description: "The id that needs to be fetched. Use '62b9f350d45365e780644cdc' for testing."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/Ship"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid id supplied"
+        "404":
+          description: "Ship not found"
+
+    delete:
+      tags:
+        - "ships"
+      summary: "Get ship by ID"
+      description: ""
+      operationId: "deleteShipByID"
+      parameters:
+        - name: "shipId"
+          in: "path"
+          description: "Grab the id from one of the reservation from Get all request."
+          required: true
+
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid id supplied"
+        "404":
+          description: "Ship not found"
+
+  /api/user:
+    get:
+      tags:
+        - "user"
+      summary: "Get all users"
+      description: ""
+      operationId: "getUsers"
+
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid id supplied"
+        "404":
+          description: "User not found"
+
+  /api/user/register:
+    post:
+      tags:
+        - "user"
+      summary: "Add a new user to your team"
+      description: ""
+      operationId: "addUser"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/User"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "Invalid input"
+
+  /api/user/login:
+    post:
+      tags:
+        - "user"
+      summary: "Login with existing user"
+      description: ""
+      operationId: "loginUser"
+      produces:
+        - "application/json"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/UserLogin"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "Invalid input"
+
+  /api/user/{userId}:
+    delete:
+      tags:
+        - "user"
+      summary: "Delete user by ID"
+      description: ""
+      operationId: "deleteUserByID"
+      parameters:
+        - name: "userId"
+          in: "path"
+          description: "Grab the id from one of the users from Get all request."
+          required: true
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid id supplied"
+        "404":
+          description: "User not found"
+
+definitions:
+  User:
+    type: "object"
+    required:
+      - "name"
+      - "password"
+      - "email"
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+  Reservation:
+    type: "object"
+    required:
+      - "x"
+      - "y"
+      - "fillColor"
+      - "from"
+      - "to"
+    properties:
+      x:
+        type: "string"
+        example: "Ship Name"
+      y:
+        type: "array"
+        example: [1654560000000, 1664409600000]
+        items:
+          type: "integer"
+          description: "Unix timestamps"
+          minItems: 2
+          maxItems: 2
+      fillColor:
+        type: "string"
+        description: "pet status in the store"
+        enum:
+          - "#006066"
+          - "#061137"
+      from:
+        type: "string"
+        example: "Split"
+      to:
+        type: "string"
+        example: "Dubrovnik"
+
+  Ship:
+    type: "object"
+    required:
+      - "name"
+      - "length"
+      - "width"
+      - "capacity"
+      - "crew"
+    properties:
+      name:
+        type: "string"
+        example: "Ship Name"
+      length:
+        type: "integer"
+        example: 15
+      width:
+        type: "integer"
+        example: 7.5
+      capacity:
+        type: "integer"
+        example: 24
+      crew:
+        type: "integer"
+        example: 5
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
+components:
+  UserLogin:
+    type: "object"
+    required:
+      - "password"
+      - "email"
+    properties:
+      email:
+        type: "string"
+      password:
+        type: "string"
