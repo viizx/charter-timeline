@@ -276,6 +276,10 @@ paths:
       description: ""
       operationId: "deleteUserByID"
       parameters:
+        - name: "auth-token"
+          in: "header"
+          required: true
+          type: "string"
         - name: "userId"
           in: "path"
           description: "Grab the id from one of the users from Get all request."
