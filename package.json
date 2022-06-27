@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/viizx/charter-timeline#readme",
   "dependencies": {
-    "@hapi/joi": "^17.1.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
@@ -29,6 +28,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.1",
     "node-cron": "^3.0.0",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "swagger-ui-express": "^4.4.0",
+    "yamljs": "^0.3.0"
   }
 }
