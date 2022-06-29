@@ -24,7 +24,7 @@ router.get('/:reservationId', async(req, res) => {
 })
 
 // izbrisi odredenu rezervaciju
-router.delete('/:reservationId', async(req, res) => {
+router.delete('/:reservationId', verify, async(req, res) => {
   try {
     const removedReservation = await Reservation.deleteOne({
       _id: req.params.reservationId
@@ -36,7 +36,7 @@ router.delete('/:reservationId', async(req, res) => {
 })
 
 // stvori novu rezervaciju
-router.post('/', async(req, res) => {
+router.post('/', verify, async(req, res) => {
   const reservation = new Reservation({
     x: req.body.x,
     y: req.body.y,
@@ -55,7 +55,7 @@ router.post('/', async(req, res) => {
 })
 
 // edit rezervaciju
-router.put('/:reservationId', async(req, res) => {
+router.put('/:reservationId', verify, async(req, res) => {
   try {
     const updatedReservation = await Reservation.updateOne(
       { _id: req.params.reservationId },

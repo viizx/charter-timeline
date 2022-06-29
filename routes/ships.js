@@ -24,7 +24,7 @@ router.get('/:shipId', async(req, res) => {
 })
 
 // izbrisi odredeni brod
-router.delete('/:shipId', async(req, res) => {
+router.delete('/:shipId', verify, async(req, res) => {
   try {
     const removedShip = await Ship.deleteOne({
       _id: req.params.shipId
@@ -36,7 +36,7 @@ router.delete('/:shipId', async(req, res) => {
 })
 
 // dodaj novi brod
-router.post('/', async(req, res) => {
+router.post('/', verify, async(req, res) => {
   const ship = new Ship({
     name: req.body.name,
     length: req.body.length,
@@ -55,7 +55,7 @@ router.post('/', async(req, res) => {
 })
 
 // edit brod
-router.put('/:shipId', async(req, res) => {
+router.put('/:shipId', verify, async(req, res) => {
   try {
     const updatedShip = await Ship.updateOne(
       { _id: req.params.shipId },

@@ -10,7 +10,7 @@ const {
 } = require('../utility/validation')
 
 // dobavi korisnika mailom
-router.get('/email/', async(req, res) => {
+router.get('/email/', verify, async(req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email })
     res.json(user)
@@ -19,7 +19,7 @@ router.get('/email/', async(req, res) => {
   }
 })
 // dobavi korisnike
-router.get('/', async(req, res) => {
+router.get('/', verify, async(req, res) => {
   try {
     const users = await User.find()
     res.json(users)
@@ -28,7 +28,7 @@ router.get('/', async(req, res) => {
   }
 })
 // dobavi korisnika
-router.get('/:userId', async(req, res) => {
+router.get('/:userId', verify, async(req, res) => {
   try {
     const user = await User.findOne({ _id: req.params.userId })
     res.json(user)
@@ -37,7 +37,7 @@ router.get('/:userId', async(req, res) => {
   }
 })
 
-// izbrisi korisnika mailom
+// izbrisi korisnika pomocu id-a
 router.delete('/:userId', verify, async(req, res) => {
   try {
     const user = await User.deleteOne({ _id: req.params.userId })
