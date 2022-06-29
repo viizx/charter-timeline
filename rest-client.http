@@ -1,0 +1,137 @@
+@baseUrl = http://localhost:3000/api
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmJjYzkxMWY2ZjE4ZmZiYWFkMDA2MDYiLCJpYXQiOjE2NTY1Mzk0MTd9.2z2ykiHK_tr5DtF5Fz_kgE0wnTL2TQ3iNRyAoiHi1Eo
+@userId = 62bcc911f6f18ffbaad00606
+@shipId = 62bccf7df6f18ffbaad0060d
+@reservationId = 62bcd0a2f6f18ffbaad00613
+@email = testRest1@gmail.com
+
+### Server up and running
+GET http://localhost:3000 HTTP/1.1;
+
+
+#############################
+###### User Operations ######
+#############################
+
+### Get all users
+GET {{baseUrl}}/user HTTP/1.1
+auth-token: {{authToken}}
+
+### Get user by email
+GET {{baseUrl}}/user/email
+Content-Type: application/json
+auth-token: {{authToken}}
+
+{
+    "email": "testRest1@gmail.com"
+}
+
+### Get user by id
+GET {{baseUrl}}/user/{{userId}} HTTP/1.1
+auth-token: {{authToken}}
+
+### Delete user by id
+DELETE {{baseUrl}}/user/62bcd5c4b8b0309a57800db7
+auth-token: {{authToken}}
+
+### Login with existing user
+POST {{baseUrl}}/user/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "testRest1@gmail.com",
+    "password": "testRest1"
+}
+
+### Register a new user
+POST {{baseUrl}}/user/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "test",
+    "email": "testRest2@gmail.com",
+    "password": "testRest2"
+}
+
+
+#############################
+###### Ship Operations ######
+#############################
+
+### Get all Ships
+GET {{baseUrl}}/ship HTTP/1.1
+Content-Type: application/json
+
+### Add new Ship
+POST {{baseUrl}}/ship HTTP/1.1
+Content-Type: application/json
+auth-token: {{authToken}}
+
+{
+    "name": "Rest Client Test",
+    "length": 35,
+    "width": 16,
+    "capacity": 45,
+    "crew": 6
+}
+
+### Edit existing Ship
+PUT {{baseUrl}}/ship/{{shipId}} HTTP/1.1
+Content-Type: application/json
+auth-token: {{authToken}}
+
+{
+    "name": "Test ship",
+    "length": 35,
+    "width": 16,
+    "capacity": 45,
+    "crew": 6
+}
+
+### Delete existing Ship
+DELETE {{baseUrl}}/ship/{{shipId}} HTTP/1.1
+Content-Type: application/json
+auth-token: {{authToken}}
+
+
+#############################
+## Reservation Operations ##
+#############################
+
+### Get all Reservations
+GET {{baseUrl}}/reservation HTTP/1.1
+Content-Type: application/json
+
+### Add new Reservation
+POST {{baseUrl}}/reservation HTTP/1.1
+Content-Type: application/json
+auth-token: {{authToken}}
+
+{
+    "x": "Ship Name 1",
+    "fillColor": "#006066",
+    "y": [
+      1654560000000,
+      1664409600000
+    ],
+    "from": "Split",
+    "to": "Dubrovnik"
+}
+
+### Edit existing Reservation
+PUT {{baseUrl}}/reservation/{{reservationId}} HTTP/1.1
+Content-Type: application/json
+auth-token: {{authToken}}
+
+{
+    "name": "Ship Name 2",
+    "length": 35,
+    "width": 16,
+    "capacity": 45,
+    "crew": 6
+}
+
+### Delete existing Reservation
+DELETE {{baseUrl}}/reservation/{{reservationId}} HTTP/1.1
+Content-Type: application/json
+auth-token: {{authToken}}
