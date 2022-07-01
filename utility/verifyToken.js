@@ -12,7 +12,7 @@ module.exports = function auth(req, res, next) {
     req.user = verified
     next()
   } catch (err) {
-    res.status(400)
+    res.status(403)
       .send('Invalid Token')
   }
 }

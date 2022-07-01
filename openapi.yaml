@@ -23,9 +23,9 @@ paths:
       operationId: "getReservation"
       responses:
         "200":
-          description: "successful operation"
-        "405":
-          description: "Invalid input"
+          description: "Successful Operation"
+        "500":
+          description: "Internal server error"
 
     post:
       tags:
@@ -43,9 +43,15 @@ paths:
         - ApiKeyAuth: []
       responses:
         "200":
-          description: "successful operation"
-        "405":
-          description: "Invalid input"
+          description: "Successful Operation"
+        "400":
+          description: "Bad Request"
+        "401":
+          description: "No Token provided"
+        "403":
+          description: "Invalid Token"
+        "500":
+          description: "Internal Server Error"
 
   /api/reservation/{reservationId}:
     get:
@@ -61,11 +67,17 @@ paths:
           required: true
       responses:
         "200":
-          description: "successful operation"
+          description: "Successful Operation"
         "400":
-          description: "Invalid id supplied"
+          description: "Bad Request"
+        "401":
+          description: "No Token provided"
+        "403":
+          description: "Invalid Token"
         "404":
           description: "Reservation not found"
+        "500":
+          description: "Internal Server Error"
 
     put:
       tags:
@@ -90,9 +102,15 @@ paths:
         "200":
           description: "successful operation"
         "400":
-          description: "Invalid id supplied"
+          description: "Bad Request"
+        "401":
+          description: "No Token provided"
+        "403":
+          description: "Invalid Token"
         "404":
           description: "Reservation not found"
+        "500":
+          description: "Internal Server Error"
 
     delete:
       tags:
@@ -111,9 +129,15 @@ paths:
         "200":
           description: "successful operation"
         "400":
-          description: "Invalid id supplied"
+          description: "Bad Request"
+        "401":
+          description: "No Token provided"
+        "403":
+          description: "Invalid Token"
         "404":
           description: "Reservation not found"
+        "500":
+          description: "Internal Server Error"
 
   /api/ship:
     get:
@@ -125,8 +149,8 @@ paths:
       responses:
         "200":
           description: "successful operation"
-        "405":
-          description: "Invalid input"
+        "500":
+          description: "Internal Server Error"
 
     post:
       tags:
@@ -145,8 +169,14 @@ paths:
       responses:
         "200":
           description: "successful operation"
-        "405":
-          description: "Invalid input"
+        "400":
+          description: "Bad Request"
+        "401":
+          description: "No Token provided"
+        "403":
+          description: "Invalid Token"
+        "500":
+          description: "Internal Server Error"
 
   /api/ship/{shipId}:
     get:
@@ -164,11 +194,17 @@ paths:
         - ApiKeyAuth: []
       responses:
         "200":
-          description: "successful operation"
+          description: "Successful Operation"
         "400":
-          description: "Invalid id supplied"
+          description: "Bad Request"
+        "401":
+          description: "No Token provided"
+        "403":
+          description: "Invalid Token"
         "404":
           description: "Ship not found"
+        "500":
+          description: "Internal Server Error"
 
     put:
       tags:
@@ -191,11 +227,17 @@ paths:
         - ApiKeyAuth: []
       responses:
         "200":
-          description: "successful operation"
+          description: "Successful Operation"
         "400":
-          description: "Invalid id supplied"
+          description: "Bad Request"
+        "401":
+          description: "No Token provided"
+        "403":
+          description: "Invalid Token"
         "404":
           description: "Ship not found"
+        "500":
+          description: "Internal Server Error"
 
     delete:
       tags:
@@ -214,9 +256,15 @@ paths:
         "200":
           description: "successful operation"
         "400":
-          description: "Invalid id supplied"
+          description: "Bad Request"
+        "401":
+          description: "No Token provided"
+        "403":
+          description: "Invalid Token"
         "404":
           description: "Ship not found"
+        "500":
+          description: "Internal Server Error"
 
   /api/user/login:
       post:
@@ -236,8 +284,10 @@ paths:
         responses:
           "200":
             description: "successful operation"
-          "405":
-            description: "Invalid input"
+          "404":
+            description: "User not found"
+          "500":
+            description: "Internal Server Error"
   /api/user:
     get:
       tags:
@@ -252,8 +302,14 @@ paths:
           description: "successful operation"
         "400":
           description: "Invalid id supplied"
+        "401":
+          description: "No Token provided"
+        "403":
+          description: "Invalid Token"
         "404":
           description: "User not found"
+        "500":
+          description: "Internal Server Error"
 
   /api/user/register:
     post:
@@ -278,12 +334,13 @@ paths:
     post:
       tags:
         - "user"
-      summary: "Login with existing user"
-      description: ""
+      summary: "Login with existing user."
+      description: "Use email: testRest1@gmail.com with password: testRest1"
       operationId: "loginUser"
       produces:
         - "application/json"
       requestBody:
+        description: ""
         required: true
         content:
           application/json:
@@ -291,11 +348,37 @@ paths:
               $ref: "#/components/UserLogin"
       responses:
         "200":
-          description: "successful operation"
-        "405":
-          description: "Invalid input"
+          description: "Successful Pperation"
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "User not found"
+        "500":
+          description: "Internal Server Error"
 
   /api/user/{userId}:
+    get:
+      tags: - "user"
+      summary: "Get user by ID"
+      description: ""
+      operationId: "getUserByID"
+      parameters:
+        - name: "userId"
+          in: "path"
+          description: "Grab the id from one of the users from Get all request."
+          required: true
+      security:
+        - ApiKeyAuth: []
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Bad Request"
+        "404":
+          description: "User not found"
+        "500":
+          description: "Internal Server Error"      
+
     delete:
       tags:
         - "user"
@@ -313,9 +396,11 @@ paths:
         "200":
           description: "successful operation"
         "400":
-          description: "Invalid id supplied"
+          description: "Bad Request"
         "404":
           description: "User not found"
+        "500":
+          description: "Internal Server Error"
 
 definitions:
   User:
