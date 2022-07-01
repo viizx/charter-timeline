@@ -39,4 +39,4 @@ cron.schedule('0 0 * * *', function() {
 })
 
 // Listening on port
-app.listen(3000, () => console.log('Server up and running'))
+app.listen(process.env.PORT, () => console.log(`Server up and running on port ${process.env.PORT.toString()}`))
