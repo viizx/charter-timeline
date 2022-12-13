@@ -35,18 +35,6 @@ const shipValidation = (data) => {
   const schema = joi.object({
     name: joi.string()
       .min(3)
-      .required(),
-    length: joi.number()
-      .min(2)
-      .required(),
-    width: joi.number()
-      .min(2)
-      .required(),
-    capacity: joi.number()
-      .min(2)
-      .required(),
-    crew: joi.number()
-      .min(2)
       .required()
   })
 
@@ -66,7 +54,10 @@ const reservationValidation = (data) => {
       .required(),
     to: joi.string()
       .min(3)
-      .required()
+      .required(),
+    fillColor:joi.string()
+    .min(3)
+    .required()
   })
 
   return schema.validate(data)
