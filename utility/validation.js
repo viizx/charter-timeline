@@ -50,14 +50,12 @@ const reservationValidation = (data) => {
       .length(2)
       .required(),
     from: joi.string()
-      .min(3)
-      .required(),
+      .min(3),
     to: joi.string()
       .min(3)
       .required(),
     fillColor:joi.string()
     .min(3)
-    .required()
   })
 
   return schema.validate(data)
