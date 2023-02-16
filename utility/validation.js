@@ -49,10 +49,8 @@ const reservationValidation = (data) => {
     y: joi.array()
       .length(2)
       .required(),
-    from: joi.string()
-      .min(3),
-    to: joi.string()
-      .min(3),
+    from: joi.string(),
+    to: joi.string(),
     fillColor:joi.string()
       .min(3)
       .required()
