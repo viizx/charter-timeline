@@ -31,9 +31,9 @@ app.use('/api/reservation', reservationRoute)
 app.use('/api/ship', shipRoute)
 
 // Cron Job to delete old reservations every day at midnight
-cron.schedule('0 0 * * *', function() {
-  deleteOld()
-})
+// cron.schedule('0 0 * * *', function() {
+//   deleteOld()
+// })
 
 // Listening on port
 app.listen(process.env.PORT, () => console.log(`Server up and running on port ${process.env.PORT.toString()}`))
