@@ -21,13 +21,13 @@ const reservationSchema = new mongoose.Schema({
   },
   from: {
     type: String,
-    required: true,
+    required: false,
     max: 1024,
     min: 3
   },
   to: {
     type: String,
-    required: true,
+    required: false,
     max: 1024,
     min: 3
   }
