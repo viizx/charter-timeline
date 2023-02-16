@@ -52,10 +52,10 @@ const reservationValidation = (data) => {
     from: joi.string()
       .min(3),
     to: joi.string()
-      .min(3)
-      .required(),
+      .min(3),
     fillColor:joi.string()
-    .min(3)
+      .min(3)
+      .required()
   })
 
   return schema.validate(data)
