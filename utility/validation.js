@@ -49,6 +49,7 @@ const reservationValidation = (data) => {
     y: joi.array()
       .length(2)
       .required(),
+    broker: joi.string().allow(""),
     from: joi.string().allow(""),
     to: joi.string().allow(""),
     fillColor:joi.string()

@@ -26,6 +26,10 @@ const reservationSchema = new mongoose.Schema({
   to: {
     type: String,
     required: false
+  },
+  broker: {
+    type: String,
+    required: false
   }
 })
 

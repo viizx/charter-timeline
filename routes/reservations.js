@@ -74,7 +74,8 @@ router.post('/', verify, async(req, res) => {
     y: req.body.y,
     fillColor: req.body.fillColor,
     from: req.body.from,
-    to: req.body.to
+    to: req.body.to,
+    broker: req.body.broker
   })
 
   try {
@@ -108,7 +109,8 @@ router.put('/:reservationId', verify, async(req, res) => {
           y: req.body.y,
           fillColor: req.body.fillColor,
           from: req.body.from,
-          to: req.body.to
+          to: req.body.to,
+          broker: req.body.broker
         }
       }
     )
